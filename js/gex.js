@@ -1,4 +1,4 @@
-import config from '../config.js';
+import config from './config.js';
 
 const STRIKE_RANGE = { lower: 0.92, upper: 1.08 };
 const BILLIONS = 1e9;
