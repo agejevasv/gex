@@ -1,4 +1,4 @@
-# GEX - SPX Gamma Exposure
+# SPX 0DTE Gamma Exposure Charts (GEX)
 
 A lightweight visualization tool for SPX Gamma Exposure (GEX) of zero days to expiration options (0DTE).
 
