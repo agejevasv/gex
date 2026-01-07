@@ -10,7 +10,7 @@ A lightweight visualization tool for SPX Gamma Exposure (GEX) of zero days to ex
 
 ## Features
 
-- Light-weight, no build required, only JavaScript
+- Light-weight, no build required, runs in browser, pure JavaScript
 - Almost Real-time (15 min delay) SPX gamma exposure visualization
 - Net GEX (based on both Open Interest and Volume) and separate Calls/Puts views
 - Responsive design for desktop and mobile
