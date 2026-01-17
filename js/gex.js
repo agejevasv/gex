@@ -1,4 +1,5 @@
 import config from './config.js';
+import { isWeekend } from './util.js';
 
 const STRIKE_RANGE = { lower: 0.92, upper: 1.08 };
 const BILLIONS = 1e9;
@@ -32,12 +33,21 @@ export class GEX {
         this.options = quotes.data.options.map(opt => ({
             ...opt,
             type: opt.option.match(/\d([CP])\d/)?.[1] || null,
-            strike: parseInt(opt.option.match(/\d[CP](\d+)\d{3}/)?.[1]) || null
+            strike: parseInt(opt.option.match(/\d[CP](\d+)\d{3}/)?.[1]) || null,
+            expiry: opt.option.match(/^(?:SPXW?|_SPX)(\d{6})/)?.[1] || null
         }));
 
+        // On weekends, find the nearest expiry date >= target date (next trading day)
+        // On trading days, strictly use today's date
+        let targetDate = this.date;
+        if (isWeekend()) {
+            const expiries = [...new Set(this.options.map(o => o.expiry).filter(Boolean))].sort();
+            targetDate = expiries.find(exp => exp >= this.date) || this.date;
+        }
+
         this.options0dte = this.options.filter(opt =>
-            opt.option.startsWith(`${symbol}W${this.date}`) ||
-            opt.option.startsWith(`${symbol}${this.date}`)
+            opt.option.startsWith(`${symbol}W${targetDate}`) ||
+            opt.option.startsWith(`${symbol}${targetDate}`)
         );
     }
 

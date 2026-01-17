@@ -6,6 +6,11 @@ export function getTradingDay() {
     return date.toISOString().slice(2, 10).replace(/-/g, '');
 }
 
+export function isWeekend() {
+    const day = new Date().getDay();
+    return day === 0 || day === 6;
+}
+
 export function formatTimestamp(str) {
     return new Date(str.replace(' ', 'T') + 'Z')
         .toLocaleString('sv')
