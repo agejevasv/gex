@@ -2,7 +2,9 @@
 
 A lightweight visualization tool for SPX Gamma Exposure (GEX) of zero days to expiration options (0DTE).
 
+<a href="https://agejevasv.github.io/gex/">
 <img src="https://github.com/user-attachments/assets/e4df7f8c-07c2-41e3-ba27-463404066b8e" />
+</a>
 
 ## Features
 
